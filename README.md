@@ -1,10 +1,4 @@
-# Simple node project boiler plate
-
-A code base to base simple node projects that utilizes:
-
-- **eslint** for js linting
-- **mocha** for testing
-- **nodemon** for continuous development
+An implementation of quick sort in node.
 
 ---
 
