@@ -1,10 +1,13 @@
 'use strict';
 
 var Mocha = require('mocha');
+var walkSync = require('walk-sync');
 
 var mocha = new Mocha();
 
-mocha.addFile('tests/unit/sample');
+walkSync('.', { globs: ['tests/**/*.js'] }).forEach(function(file) {
+  mocha.addFile(file);
+});
 
 mocha.run(function(failures) {
   process.on('exit', function() {

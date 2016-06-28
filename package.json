@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "./node_modules/nodemon/bin/nodemon.js --exec 'npm run lint && npm test'",
+    "start": "./node_modules/nodemon/bin/nodemon.js --exec 'npm test'",
     "lint": "eslint **/*.js",
     "test": "node ./tests"
   },
@@ -27,5 +27,8 @@
     "eslint": "^2.11.1",
     "mocha": "^2.5.3",
     "nodemon": "^1.9.2"
+  },
+  "dependencies": {
+    "walk-sync": "^0.2.6"
   }
 }
