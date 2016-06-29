@@ -12,9 +12,7 @@ function quickSort(method, A) {
     let length = r - l;
     let A = _A;
 
-    if (length < 1) {
-      return A;
-    }
+    if ((r-l) < 1) { return A; }
 
     count += length;
 
@@ -52,13 +50,53 @@ function quickSort(method, A) {
     let _x, _y;
 
     switch (method) {
-      case 'first': return A;
+      case 'first':
+        break;
       case 'last':
         _x = A[l];
         _y = A[r];
         A[l] = _y;
         A[r] = _x;
-        return A;
+        break;
+      case 'median':
+        let length = r - l + 1;
+        let k;
+
+        if (length % 2 === 0) {
+          k = (length / 2) - 1 + l;
+        } else {
+          k = Math.floor(length / 2) + l;
+        }
+
+        let z = medianPivotIndex(A, l, k, r);
+
+        _x = A[l];
+        _y = A[z];
+        A[l] = _y;
+        A[z] = _x;
+        break;
+    }
+
+    return A;
+  }
+
+  function medianPivotIndex(A, l, k, r) {
+    switch (true) {
+      case l === k && l === r:
+      case A[l] === A[k] && A[l] === A[r]:
+        return l;
+      case l === k:
+        return A[l] < A[r] ? l : r;
+      case l === r:
+        return A[l] < A[k] ? l : k;
+      case A[l] > A[k] && A[k] > A[r]:
+      case A[l] < A[k] && A[k] < A[r]:
+        return k;
+      case A[l] > A[r] && A[r] > A[k]:
+      case A[l] < A[r] && A[r] < A[k]:
+        return r;
+      default:
+        return l;
     }
   }
 }
